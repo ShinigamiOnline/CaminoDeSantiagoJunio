@@ -149,20 +149,48 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
     @Override
     public void eliminarMunicipio(Municipio municipio) {
 
+        int idMunicipio = municipio.getId();
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        int eliminados = sqLiteDatabase.delete("Municipio","_id = "+idMunicipio,null);
+        if (eliminados > 0 ){
+            Toast.makeText(null, "Municipio eliminado correctamente", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     @Override
     public void eliminarAlbergue(Albergue albergue) {
+        int idAlbergue = albergue.getId();
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        int eliminados = sqLiteDatabase.delete("Albergue","_id = "+idAlbergue,null);
+        if (eliminados > 0 ){
+            Toast.makeText(null, "Albergue eliminado correctamente", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
     @Override
     public void eliminarMonumento(Monumento monumento) {
 
+        int idMonumento = monumento.getId();
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        int eliminados = sqLiteDatabase.delete("Monumento","_id = "+idMonumento,null);
+        if (eliminados > 0 ){
+            Toast.makeText(null, "Monumento eliminado correctamente", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
     public void cargarMunicipios(Municipio municipio) {
+
 
     }
 
@@ -187,7 +215,24 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
     }
 
     @Override
-    public void guardarValoracion(Municipio municipio, float valoracion) {
+    public void guardarValoracion(Albergue albergue, float valoracion) {
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ContentValues nuevosValores = new ContentValues();
+
+        Municipio municipioDelAlbergue = albergue.getMunicipio();
+        int idAlbergue = albergue.getId();
+        int idMunicipio = municipioDelAlbergue.getId();
+
+        nuevosValores.put("valoracionSum", albergue.getValoracionSum());
+
+        int numModificados = 0;
+        numModificados = sqLiteDatabase.update("Albergue", nuevosValores, "_id = " + idAlbergue, null);
+
+        if (numModificados > 0) {
+            Toast.makeText(null, "Valoracion modificado correctamente", Toast.LENGTH_SHORT).show();
+
+        }
 
     }
 

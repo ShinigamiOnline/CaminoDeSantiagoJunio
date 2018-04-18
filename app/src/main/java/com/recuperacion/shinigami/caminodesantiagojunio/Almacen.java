@@ -26,6 +26,6 @@ public interface Almacen {
 
     void cargarMonumentos(Municipio municipio);
 
-    void guardarValoracion(Municipio municipio,float valoracion);
+    void guardarValoracion(Albergue albergue,float valoracion);
 
 }
