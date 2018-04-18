@@ -186,6 +186,8 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
             Toast.makeText(null, "Monumento eliminado correctamente", Toast.LENGTH_SHORT).show();
         }
 
+
+
     }
 
     @Override
