@@ -11,16 +11,16 @@ public class Albergue {
     private int valoracionSum;
     private int votos;
     private double precio;
-    private Municipio municipio;
+    private int id_Municipio;
 
-    public Albergue(int id, String descripcion, String nombre, int valoracionSum, int votos, double precio, Municipio municipio) {
+    public Albergue(int id, String descripcion, String nombre, int valoracionSum, int votos, double precio, int id_Municipio) {
         this.id = id;
         this.descripcion = descripcion;
         this.nombre = nombre;
         this.valoracionSum = valoracionSum;
         this.votos = votos;
         this.precio = precio;
-        this.municipio = municipio;
+        this.id_Municipio = id_Municipio;
     }
 
     public int getId() {
@@ -71,11 +71,11 @@ public class Albergue {
         this.precio = precio;
     }
 
-    public Municipio getMunicipio() {
-        return municipio;
+    public int getId_Municipio() {
+        return id_Municipio;
     }
 
-    public void setMunicipio(Municipio municipio) {
-        this.municipio = municipio;
+    public void setId_Municipio(int id_Municipio) {
+        this.id_Municipio = id_Municipio;
     }
 }

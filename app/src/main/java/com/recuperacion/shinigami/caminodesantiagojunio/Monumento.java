@@ -10,15 +10,15 @@ public class Monumento {
     private String descripcion;
     private String horario;
     private  double  precioEntrada;
-    private Municipio municipio;
+    private int  id_Municipio;
 
-    public Monumento(int id, String nombre, String descripcion, String horario, double precioEntrada, Municipio municipio) {
+    public Monumento(int id, String nombre, String descripcion, String horario, double precioEntrada, int id_Municipio) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.horario = horario;
         this.precioEntrada = precioEntrada;
-        this.municipio = municipio;
+        this.id_Municipio = id_Municipio;
     }
 
     public int getId() {
@@ -61,11 +61,11 @@ public class Monumento {
         this.precioEntrada = precioEntrada;
     }
 
-    public Municipio getMunicipio() {
-        return municipio;
+    public int getId_Municipio() {
+        return id_Municipio;
     }
 
-    public void setMunicipio(Municipio municipio) {
-        this.municipio = municipio;
+    public void setId_Municipio(int id_Municipio) {
+        this.id_Municipio = id_Municipio;
     }
 }

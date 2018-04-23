@@ -2,15 +2,18 @@ package com.recuperacion.shinigami.caminodesantiagojunio;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by Shinigami on 01/04/2018.
  */
 
-public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
+public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
 
     public AlmacenarEnDBSQLite(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -26,8 +29,8 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
         String nombreMunicipio = municipioNuevo.getNombre();
         int numHabitantes = municipioNuevo.getHabitantes();
         String descripcion = municipioNuevo.getDescripcion();
-        
-        sqLiteDatabase.execSQL("INSERT INTO Municipio values("+idMunicipio+",'"+nombreMunicipio+"',"+numHabitantes+",'"+descripcion+"')");
+
+        sqLiteDatabase.execSQL("INSERT INTO Municipio values(" + idMunicipio + ",'" + nombreMunicipio + "'," + numHabitantes + ",'" + descripcion + "')");
 
         Toast.makeText(null, "Municipio añadido correctamente", Toast.LENGTH_SHORT).show();
     }
@@ -36,19 +39,17 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
     public void aniadirAlbergue(Albergue albergue) {
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        Albergue albergueNuevo = albergue;
 
-        int idAlbergue = albergueNuevo.getId();
-        String descripcion = albergueNuevo.getDescripcion();
-        String nombreAlbergue = albergueNuevo.getNombre();
-        int valoracionSum = albergueNuevo.getValoracionSum();
-        int votos = albergueNuevo.getVotos();
-        double precio = albergueNuevo.getPrecio();
+        int idAlbergue = albergue.getId();
+        String descripcion = albergue.getDescripcion();
+        String nombreAlbergue = albergue.getNombre();
+        int valoracionSum = albergue.getValoracionSum();
+        int votos = albergue.getVotos();
+        double precio = albergue.getPrecio();
 
-        Municipio municipioDelAlbergue = albergueNuevo.getMunicipio();
-        int idMunicipioDelAlbergue = municipioDelAlbergue.getId();
+        int idMunicipioDelAlbergue = albergue.getId_Municipio();
 
-        sqLiteDatabase.execSQL("INSERT INTO Albergue values("+idAlbergue+",'"+nombreAlbergue+"','"+descripcion+"',"+valoracionSum+","+votos+","+precio+","+idMunicipioDelAlbergue+")");
+        sqLiteDatabase.execSQL("INSERT INTO Albergue values(" + idAlbergue + ",'" + nombreAlbergue + "','" + descripcion + "'," + valoracionSum + "," + votos + "," + precio + "," + idMunicipioDelAlbergue + ")");
         Toast.makeText(null, "Municipio añadido correctamente", Toast.LENGTH_SHORT).show();
     }
 
@@ -56,18 +57,16 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
     public void aniadirMonumento(Monumento monumento) {
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        Monumento monumentoNuevo = monumento;
 
-        int idMonumento = monumentoNuevo.getId();
-        String nombre = monumentoNuevo.getNombre();
-        String descripcion = monumentoNuevo.getDescripcion();
-        String horario = monumentoNuevo.getHorario();
-        double precioEntrada = monumentoNuevo.getPrecioEntrada();
+        int idMonumento = monumento.getId();
+        String nombre = monumento.getNombre();
+        String descripcion = monumento.getDescripcion();
+        String horario = monumento.getHorario();
+        double precioEntrada = monumento.getPrecioEntrada();
 
-        Municipio municipioDelMonumento = monumentoNuevo.getMunicipio();
-        int idMunicipioDelMonumento = municipioDelMonumento.getId();
+        int idMunicipioDelMonumento = monumento.getId_Municipio();
 
-        sqLiteDatabase.execSQL("INSERT INTO Monumento values("+idMonumento+",'"+nombre+"','"+descripcion+"','"+horario+"',"+precioEntrada+","+idMunicipioDelMonumento+")");
+        sqLiteDatabase.execSQL("INSERT INTO Monumento values(" + idMonumento + ",'" + nombre + "','" + descripcion + "','" + horario + "'," + precioEntrada + "," + idMunicipioDelMonumento + ")");
         Toast.makeText(null, "Municipio añadido correctamente", Toast.LENGTH_SHORT).show();
     }
 
@@ -78,15 +77,15 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
         ContentValues nuevosValores = new ContentValues();
 
         int idMunicipio = municipio.getId();
-       // nuevosValores.put("_id",municipioAModificar.getId());
+        // nuevosValores.put("_id",municipioAModificar.getId());
 
-        nuevosValores.put("nombre",municipioAModificar.getNombre());
-        nuevosValores.put("habitantes",municipioAModificar.getHabitantes());
-        nuevosValores.put("descripcionMunicipio",municipioAModificar.getDescripcion());
+        nuevosValores.put("nombre", municipioAModificar.getNombre());
+        nuevosValores.put("habitantes", municipioAModificar.getHabitantes());
+        nuevosValores.put("descripcionMunicipio", municipioAModificar.getDescripcion());
 
         int numModificados = 0;
-        numModificados = sqLiteDatabase.update("Municipio",nuevosValores,"_id = " + idMunicipio,null);
-        if (numModificados > 0 ) {
+        numModificados = sqLiteDatabase.update("Municipio", nuevosValores, "_id = " + idMunicipio, null);
+        if (numModificados > 0) {
             Toast.makeText(null, "Municipio Modificado correctamente", Toast.LENGTH_SHORT).show();
 
         }
@@ -95,21 +94,18 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
     @Override
     public void modificarAlbergue(Albergue albergue) {
 
-        Albergue albergueAModificar = albergue;
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues nuevosValores = new ContentValues();
-        Municipio municipioDelAlbergue = albergueAModificar.getMunicipio();
-        int idAlbergue = albergueAModificar.getId();
-        int idMunicipio = municipioDelAlbergue.getId();
+        int idAlbergue = albergue.getId();
 
         //nuevosValores.put("_id",albergueAModificar.getNombre());
 
-        nuevosValores.put("nombre", albergueAModificar.getNombre());
-        nuevosValores.put("descripcion", albergueAModificar.getDescripcion());
-        nuevosValores.put("valoracionSum", albergueAModificar.getValoracionSum());
-        nuevosValores.put("votos", albergueAModificar.getVotos());
-        nuevosValores.put("precio", albergueAModificar.getPrecio());
-        nuevosValores.put("id_Municipio", idMunicipio);
+        nuevosValores.put("nombre", albergue.getNombre());
+        nuevosValores.put("descripcion", albergue.getDescripcion());
+        nuevosValores.put("valoracionSum", albergue.getValoracionSum());
+        nuevosValores.put("votos", albergue.getVotos());
+        nuevosValores.put("precio", albergue.getPrecio());
+        nuevosValores.put("id_Municipio", albergue.getId_Municipio());
 
         int numModificados = 0;
         numModificados = sqLiteDatabase.update("Albergue", nuevosValores, "_id = " + idAlbergue, null);
@@ -123,26 +119,24 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
     public void modificarMonumento(Monumento monumento) {
 
 
-        Monumento monumentoAModificar = monumento;
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues nuevosValores = new ContentValues();
-        Municipio municipioDelMonumento = monumentoAModificar.getMunicipio();
-        int idMunicipio = municipioDelMonumento.getId();
-        int idMonumento = monumentoAModificar.getId();
+        int idMonumento = monumento.getId();
 
         //nuevosValores.put("_id",MonumentoAModificar.getNombre());
 
-        nuevosValores.put("nombre", monumentoAModificar.getNombre());
-        nuevosValores.put("descripcion", monumentoAModificar.getDescripcion());
-        nuevosValores.put("horario", monumentoAModificar.getHorario());
-        nuevosValores.put("precio_Entrada", monumentoAModificar.getPrecioEntrada());
-        nuevosValores.put("id_Municipio", idMunicipio);
+        nuevosValores.put("nombre", monumento.getNombre());
+        nuevosValores.put("descripcion", monumento.getDescripcion());
+        nuevosValores.put("horario", monumento.getHorario());
+        nuevosValores.put("precio_Entrada", monumento.getPrecioEntrada());
+        nuevosValores.put("id_Municipio", monumento.getId_Municipio());
 
         int numModificados = 0;
         numModificados = sqLiteDatabase.update("Monumento", nuevosValores, "_id = " + idMonumento, null);
         if (numModificados > 0) {
             Toast.makeText(null, "Monumento Modificado correctamente", Toast.LENGTH_SHORT).show();
-
+        } else {
+            Toast.makeText(null, "Monumento NO Modificado.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -153,9 +147,11 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
-        int eliminados = sqLiteDatabase.delete("Municipio","_id = "+idMunicipio,null);
-        if (eliminados > 0 ){
+        int eliminados = sqLiteDatabase.delete("Municipio", "_id = " + idMunicipio, null);
+        if (eliminados > 0) {
             Toast.makeText(null, "Municipio eliminado correctamente", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(null, "No se ha eliminado ningún Municipio.", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -167,9 +163,11 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
-        int eliminados = sqLiteDatabase.delete("Albergue","_id = "+idAlbergue,null);
-        if (eliminados > 0 ){
+        int eliminados = sqLiteDatabase.delete("Albergue", "_id = " + idAlbergue, null);
+        if (eliminados > 0) {
             Toast.makeText(null, "Albergue eliminado correctamente", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(null, "No se ha eliminado ningún Albergue.", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -181,38 +179,176 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
-        int eliminados = sqLiteDatabase.delete("Monumento","_id = "+idMonumento,null);
-        if (eliminados > 0 ){
+        int eliminados = sqLiteDatabase.delete("Monumento", "_id = " + idMonumento, null);
+        if (eliminados > 0) {
             Toast.makeText(null, "Monumento eliminado correctamente", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(null, "No se ha eliminado ningún Monumento.", Toast.LENGTH_SHORT).show();
         }
 
 
+    }
+
+    @Override
+    public ArrayList<Municipio> cargarMunicipios() {
+
+        ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
+
+        Municipio municipio;
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Munipio", null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String nombre = cursor.getString(1);
+            int numHabitantes = cursor.getInt(2);
+            String descripcion = cursor.getString(3);
+            municipio = new Municipio(id, nombre, numHabitantes, descripcion);
+            listaMunicipios.add(municipio);
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
+        return listaMunicipios;
 
     }
 
     @Override
-    public void cargarMunicipios(Municipio municipio) {
+    public ArrayList<Municipio> cargarMunicipios(int numHabitantes) {
 
+        ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
+
+        Municipio municipio;
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Munipio", null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String nombre = cursor.getString(1);
+            int numeroHabitantes = cursor.getInt(2);
+            String descripcion = cursor.getString(3);
+            municipio = new Municipio(id, nombre, numeroHabitantes, descripcion);
+
+            if (municipio.getHabitantes() > numHabitantes) {
+                listaMunicipios.add(municipio);
+            } else {
+
+            }
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
+        return listaMunicipios;
 
     }
 
     @Override
-    public void cargarMunicipios(Municipio municipio, int numHabitantes) {
+    public ArrayList<Municipio> cargarMunicipios(int numHabitantes, String descripcionABuscar) {
+
+        ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
+
+        Municipio municipio;
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Munipio", null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String nombre = cursor.getString(1);
+            int numeroHabitantes = cursor.getInt(2);
+            String descripcionMunicipio = cursor.getString(3);
+            municipio = new Municipio(id, nombre, numeroHabitantes, descripcionMunicipio);
+
+            if (municipio.getHabitantes() > numHabitantes && descripcionMunicipio.startsWith(descripcionABuscar)) {
+                listaMunicipios.add(municipio);
+            } else {
+
+            }
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
+        return listaMunicipios;
 
     }
 
     @Override
-    public void cargarMunicipios(Municipio municipio, int numHabitatnes, String descripcion) {
+    public ArrayList<Municipio> cargarMunicipios(int numHabitantes, String descripcionABuscar, boolean tieneAlbergues) {
+
+        ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
+
+        Municipio municipio;
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Munipio", null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String nombre = cursor.getString(1);
+            int numeroHabitantes = cursor.getInt(2);
+            String descripcionMunicipio = cursor.getString(3);
+            municipio = new Municipio(id, nombre, numeroHabitantes, descripcionMunicipio);
+
+            if (municipio.getHabitantes() > numHabitantes && descripcionMunicipio.startsWith(descripcionABuscar) && tieneAlbergues == true) {
+                listaMunicipios.add(municipio);
+            } else {
+
+            }
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
+        return listaMunicipios;
 
     }
 
     @Override
-    public void cargarAlbergues(Municipio municipio) {
+    public ArrayList<Albergue> cargarAlbergues(Municipio municipio) {
 
+        ArrayList<Albergue> listaAlbergues = new ArrayList<Albergue>();
+        int idMunicipio = municipio.getId();
+        Albergue albergue;
+
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Albergue WHERE id_Municipio =" + idMunicipio, null);
+
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String nombre = cursor.getString(1);
+            String descripcion = cursor.getString(2);
+            int valoracionSum = cursor.getInt(3);
+            int votos = cursor.getInt(4);
+            double precio = cursor.getDouble(5);
+            int id_municipio = cursor.getInt(6);
+            albergue = new Albergue(id, descripcion, nombre, valoracionSum, votos, precio, id_municipio);
+
+            listaAlbergues.add(albergue);
+
+        }
+
+        return listaAlbergues;
     }
 
     @Override
-    public void cargarMonumentos(Municipio municipio) {
+    public ArrayList<Monumento> cargarMonumentos(Municipio municipio) {
+        ArrayList<Monumento> listaMonumentos = new ArrayList<Monumento>();
+        int idMunicipio = municipio.getId();
+        Monumento monumento;
+
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Monumento WHERE id_Municipio =" + idMunicipio, null);
+
+        while (cursor.moveToNext()) {
+
+            int id = cursor.getInt(0);
+            String nombre = cursor.getString(1);
+            String descripcion = cursor.getString(2);
+            String horario = cursor.getString(3);
+            double precioEntrada = cursor.getDouble(4);
+            int id_municipio = cursor.getInt(5);
+
+            monumento = new Monumento(id, descripcion, nombre, horario, precioEntrada, id_municipio);
+
+            listaMonumentos.add(monumento);
+
+        }
+
+        return listaMonumentos;
+
 
     }
 
@@ -222,10 +358,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues nuevosValores = new ContentValues();
 
-        Municipio municipioDelAlbergue = albergue.getMunicipio();
         int idAlbergue = albergue.getId();
-        int idMunicipio = municipioDelAlbergue.getId();
-
         nuevosValores.put("valoracionSum", albergue.getValoracionSum());
 
         int numModificados = 0;
@@ -233,7 +366,6 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen{
 
         if (numModificados > 0) {
             Toast.makeText(null, "Valoracion modificado correctamente", Toast.LENGTH_SHORT).show();
-
         }
 
     }
