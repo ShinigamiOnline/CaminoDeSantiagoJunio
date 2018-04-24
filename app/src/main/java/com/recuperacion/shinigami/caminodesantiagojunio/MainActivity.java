@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
     private Button btnGestionMunicipios;
     private Button btnConsultaMunicipios;
-    private Button btnPreferencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +23,11 @@ public class MainActivity extends AppCompatActivity {
         rellenarLista();
         btnGestionMunicipios = findViewById(R.id.btnGestionMunicipios);
         btnConsultaMunicipios = findViewById(R.id.btnConsultaMunicipios);
-        btnPreferencias = findViewById(R.id.btnPreferencias);
 
         btnGestionMunicipios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Recyclerview_Municipios.class);
+                Intent intent = new Intent(MainActivity.this, Gestion_Municipios.class);
                 startActivity(intent);
             }
         });

@@ -196,7 +196,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
         Municipio municipio;
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Munipio", null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Municipio", null);
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String nombre = cursor.getString(1);
@@ -207,7 +207,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         }
         cursor.close();
         sqLiteDatabase.close();
-        Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
         return listaMunicipios;
 
     }
@@ -219,7 +219,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
         Municipio municipio;
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Munipio", null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Municipio", null);
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String nombre = cursor.getString(1);
@@ -235,7 +235,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         }
         cursor.close();
         sqLiteDatabase.close();
-        Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(null , "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
         return listaMunicipios;
 
     }
@@ -247,7 +247,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
         Municipio municipio;
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Munipio", null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Municipio", null);
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String nombre = cursor.getString(1);
@@ -275,7 +275,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
         Municipio municipio;
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Munipio", null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Municipio", null);
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String nombre = cursor.getString(1);

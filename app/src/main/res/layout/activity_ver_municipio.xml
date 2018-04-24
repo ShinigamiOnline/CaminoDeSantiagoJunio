@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Ver_municipio">
+
+    <TextView
+        android:id="@+id/txtTitulo_VerMunicipio"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="MUNICIPIO SELECCIONADO"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtCodMunicipio_VerMunicipio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="CÓDIGO MUNICIPIO"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/txtNombre_VerMunicipio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="NOMBRE "
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txtDescripcion_VerMunicipio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="DESCRIPCIÓN"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txtNumHabitantes_VerMunicipio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Nº HABITANTES"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btnModificar_VerMunicipio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="MODIFICAR" />
+
+    <Button
+        android:id="@+id/btnBorrar_VerMunicipio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BORRAR" />
+
+</LinearLayout>

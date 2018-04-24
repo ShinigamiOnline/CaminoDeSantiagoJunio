@@ -16,8 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Recyclerview_Municipios"></activity>
-
+        <activity android:name=".Recyclerview_Municipios" />
+        <activity android:name=".Gestion_Municipios" />
+        <activity android:name=".Aniadir_Municipio" />
+        <activity android:name=".Ver_municipio"></activity>
     </application>
 
 </manifest>

@@ -1,12 +1,13 @@
 package com.recuperacion.shinigami.caminodesantiagojunio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Shinigami on 01/04/2018.
  */
 
-public class Municipio {
+public class Municipio implements Serializable{
     private int id;
     private String nombre;
     private int habitantes;
@@ -67,5 +68,10 @@ public class Municipio {
 
     public void setListaMonumentos(ArrayList<Monumento> listaMonumentos) {
         this.listaMonumentos = listaMonumentos;
+    }
+
+    @Override
+    public String toString() {
+        return getNombre();
     }
 }
