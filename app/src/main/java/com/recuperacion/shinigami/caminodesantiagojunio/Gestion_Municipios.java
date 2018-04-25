@@ -18,18 +18,20 @@ public class Gestion_Municipios extends AppCompatActivity {
     private ListView listView_Municipios;
     private ArrayList<Municipio> listaMunicipio = new ArrayList<>();
     private ArrayAdapter<Municipio> arrayAdapter;
+    private AlmacenarEnDBSQLite almacenarEnDBSQLite;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion__municipios);
 
-        AlmacenarEnDBSQLite almacenarEnDBSQLite = new AlmacenarEnDBSQLite(this,"Gestion",null,1);
+        almacenarEnDBSQLite = new AlmacenarEnDBSQLite(this, "Gestion", null, 1);
         listaMunicipio = almacenarEnDBSQLite.cargarMunicipios();
 
         listView_Municipios = findViewById(R.id.listView_gestion_Municipios);
         btnAniadirMunicipio = findViewById(R.id.btnAniadirMunicipio);
 
-        arrayAdapter = new ArrayAdapter<Municipio>(this,android.R.layout.simple_list_item_1,listaMunicipio);
+        arrayAdapter = new ArrayAdapter<Municipio>(this, android.R.layout.simple_list_item_1, listaMunicipio);
 
         listView_Municipios.setAdapter(arrayAdapter);
 
@@ -38,9 +40,9 @@ public class Gestion_Municipios extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int posicion, long l) {
 
                 Municipio municipio = listaMunicipio.get(posicion);
-                Intent intent = new Intent(Gestion_Municipios.this,Ver_municipio.class);
+                Intent intent = new Intent(Gestion_Municipios.this, Ver_municipio.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("Municipio",municipio);
+                bundle.putSerializable("Municipio", municipio);
                 intent.putExtras(bundle);
                 startActivity(intent);
 
@@ -48,16 +50,23 @@ public class Gestion_Municipios extends AppCompatActivity {
         });
 
 
-
         btnAniadirMunicipio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Gestion_Municipios.this,Aniadir_Municipio.class);
+                Intent intent = new Intent(Gestion_Municipios.this, Aniadir_Municipio.class);
                 startActivity(intent);
             }
         });
 
 
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        listaMunicipio = almacenarEnDBSQLite.cargarMunicipios();
+        arrayAdapter = new ArrayAdapter<Municipio>(this, android.R.layout.simple_list_item_1, listaMunicipio);
+
+        listView_Municipios.setAdapter(arrayAdapter);
     }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Ver_municipio extends AppCompatActivity {
 
@@ -46,6 +47,8 @@ public class Ver_municipio extends AppCompatActivity {
                 municipioModificado = new Municipio(Integer.parseInt(txtCodMunicipio.getText().toString()),txtNombre.getText().toString(),Integer.parseInt(txtNumHabitantes.getText().toString()), txtDescripcion.getText().toString());
 
                 almacenarEnDBSQLite.modificarMunicipio(municipioModificado);
+                Toast.makeText(getApplicationContext(), "Municipio modificado correctamente.", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });
@@ -56,6 +59,8 @@ public class Ver_municipio extends AppCompatActivity {
                 municipioModificado = new Municipio(Integer.parseInt(txtCodMunicipio.getText().toString()),txtNombre.getText().toString(),Integer.parseInt(txtNumHabitantes.getText().toString()), txtDescripcion.getText().toString());
 
                 almacenarEnDBSQLite.eliminarMunicipio(municipioModificado);
+                Toast.makeText(getApplicationContext(), "Municipio borrado correctamente.", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });
