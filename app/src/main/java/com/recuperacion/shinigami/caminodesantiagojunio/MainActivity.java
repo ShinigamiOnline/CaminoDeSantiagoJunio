@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
     private Button btnGestionMunicipios;
     private Button btnConsultaMunicipios;
 
@@ -20,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rellenarLista();
         btnGestionMunicipios = findViewById(R.id.btnGestionMunicipios);
         btnConsultaMunicipios = findViewById(R.id.btnConsultaMunicipios);
 
@@ -33,7 +31,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    public void rellenarLista(){
-        listaMunicipios.add(new Municipio(01,"Logroño",12020,"Logroño, donde hay muchisimas cosas"));
-    }
+
 }

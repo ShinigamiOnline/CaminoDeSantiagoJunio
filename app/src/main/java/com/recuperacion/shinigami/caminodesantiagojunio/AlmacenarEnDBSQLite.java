@@ -32,7 +32,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
         sqLiteDatabase.execSQL("INSERT INTO Municipio values(" + idMunicipio + ",'" + nombreMunicipio + "'," + numHabitantes + ",'" + descripcion + "')");
 
-        Toast.makeText(null, "Municipio añadido correctamente", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(null, "Municipio añadido correctamente", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -72,23 +72,20 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
     @Override
     public void modificarMunicipio(Municipio municipio) {
-        Municipio municipioAModificar = municipio;
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues nuevosValores = new ContentValues();
 
         int idMunicipio = municipio.getId();
-        // nuevosValores.put("_id",municipioAModificar.getId());
 
-        nuevosValores.put("nombre", municipioAModificar.getNombre());
-        nuevosValores.put("habitantes", municipioAModificar.getHabitantes());
-        nuevosValores.put("descripcionMunicipio", municipioAModificar.getDescripcion());
+        nuevosValores.put("nombre", municipio.getNombre());
+        nuevosValores.put("habitantes", municipio.getHabitantes());
+        nuevosValores.put("descripcionMunicipio", municipio.getDescripcion());
 
         int numModificados = 0;
         numModificados = sqLiteDatabase.update("Municipio", nuevosValores, "_id = " + idMunicipio, null);
-        if (numModificados > 0) {
-            Toast.makeText(null, "Municipio Modificado correctamente", Toast.LENGTH_SHORT).show();
-
-        }
+       // if (numModificados > 0) {
+       //     Toast.makeText(null, "Municipio Modificado correctamente", Toast.LENGTH_SHORT).show();
+        //}
     }
 
     @Override
@@ -148,12 +145,10 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
         int eliminados = sqLiteDatabase.delete("Municipio", "_id = " + idMunicipio, null);
-        if (eliminados > 0) {
-            Toast.makeText(null, "Municipio eliminado correctamente", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(null, "No se ha eliminado ningún Municipio.", Toast.LENGTH_SHORT).show();
-        }
 
+       // if (eliminados > 0) {
+        //    Toast.makeText(null, "Municipio eliminado correctamente", Toast.LENGTH_SHORT).show();
+        //}
 
     }
 

@@ -17,7 +17,7 @@ public class Recyclerview_Municipios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview__municipios);
         recyclerView = findViewById(R.id.recycler);
-        adaptador = new MiAdaptador(this, MainActivity.listaMunicipios);
+       // adaptador = new MiAdaptador(this, MainActivity.listaMunicipios);
         recyclerView.setAdapter(adaptador);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
