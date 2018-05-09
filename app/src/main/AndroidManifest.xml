@@ -19,7 +19,13 @@
         <activity android:name=".Recyclerview_Municipios" />
         <activity android:name=".Gestion_Municipios" />
         <activity android:name=".Aniadir_Municipio" />
-        <activity android:name=".Ver_municipio"></activity>
+        <activity android:name=".Ver_municipio" />
+        <activity android:name=".VerAlberguesDelMunicipio" />
+        <activity android:name=".AniadirAlbergue" />
+        <activity android:name=".Ver_Albergue" />
+        <activity android:name=".VerMonumentosDelMunicipio" />
+        <activity android:name=".Ver_Monumento" />
+        <activity android:name=".Aniadir_Monumento"></activity>
     </application>
 
 </manifest>

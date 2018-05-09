@@ -5,77 +5,82 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Ver_municipio">
+    tools:context=".Ver_Albergue">
 
     <TextView
-        android:id="@+id/txtTitulo_VerMunicipio"
+        android:id="@+id/txtTituloAlbergueSeleccionado"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
-        android:text="MUNICIPIO SELECCIONADO"
+        android:text="ALBERGUE SELECCIONADO"
         android:textSize="21sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/txtCodMunicipio_VerMunicipio"
+        android:id="@+id/txtCodAlbergueSeleccionado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:enabled="false"
-        android:hint="CÓDIGO MUNICIPIO"
+        android:hint="CÓDIGO ALBERGUE"
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/txtNombre_VerMunicipio"
+        android:id="@+id/txtNombreAlbergueSeleccionado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="NOMBRE "
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtDescripcion_VerMunicipio"
+        android:id="@+id/txtDescripcionAlbergueSeleccionado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="DESCRIPCIÓN"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtNumHabitantes_VerMunicipio"
+        android:id="@+id/txtValoracionAlbergueSeleccionado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="Nº HABITANTES"
+        android:hint="VALORACIÓN"
         android:inputType="number" />
 
-    <Button
-        android:id="@+id/btnModificar_VerMunicipio"
+    <EditText
+        android:id="@+id/txtVotosAlbergueSeleccionado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="MODIFICAR" />
+        android:ems="10"
+        android:hint="VOTOS"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/txtPrecioAlbergueSeleccionado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="PRECIO"
+        android:inputType="numberDecimal" />
 
     <Button
-        android:id="@+id/btnBorrar_VerMunicipio"
+        android:id="@+id/btnModificarAlbergueSeleccionado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BORRAR" />
+        android:layout_marginTop="20dp"
+        android:text="MODIFICAR"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnVerAlbergues"
+        android:id="@+id/btnBorrarAlbergueSeleccionado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="VER ALBERGUES" />
-
-    <Button
-        android:id="@+id/btnVerMonumentos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="VER MONUMENTOS" />
+        android:text="BORRAR"
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Ver_municipio extends AppCompatActivity {
 
     private EditText txtCodMunicipio;
@@ -17,6 +19,8 @@ public class Ver_municipio extends AppCompatActivity {
     private EditText txtNumHabitantes;
     private Button btnModificar;
     private Button btnBorrar;
+    private Button btnVerAlbergues;
+    private Button btnVerMonumentos;
     private Municipio municipio;
     private AlmacenarEnDBSQLite almacenarEnDBSQLite;
     private Municipio municipioModificado;
@@ -31,6 +35,9 @@ public class Ver_municipio extends AppCompatActivity {
         txtNumHabitantes = findViewById(R.id.txtNumHabitantes_VerMunicipio);
         btnModificar = findViewById(R.id.btnModificar_VerMunicipio);
         btnBorrar = findViewById(R.id.btnBorrar_VerMunicipio);
+        btnVerAlbergues = findViewById(R.id.btnVerAlbergues);
+        btnVerMonumentos = findViewById(R.id.btnVerMonumentos);
+
         almacenarEnDBSQLite = new AlmacenarEnDBSQLite(this,"Gestion",null,1);
         Bundle objetoEnviado = getIntent().getExtras();
         municipio = (Municipio) objetoEnviado.getSerializable("Municipio");
@@ -58,13 +65,45 @@ public class Ver_municipio extends AppCompatActivity {
             public void onClick(View view) {
                 municipioModificado = new Municipio(Integer.parseInt(txtCodMunicipio.getText().toString()),txtNombre.getText().toString(),Integer.parseInt(txtNumHabitantes.getText().toString()), txtDescripcion.getText().toString());
 
-                almacenarEnDBSQLite.eliminarMunicipio(municipioModificado);
-                Toast.makeText(getApplicationContext(), "Municipio borrado correctamente.", Toast.LENGTH_SHORT).show();
-                finish();
+                ArrayList<Albergue> listaAlbergues = new ArrayList<>();
+                listaAlbergues = almacenarEnDBSQLite.cargarAlbergues(municipio);
+                ArrayList<Monumento> listaMonumentos = new ArrayList<>();
+                listaMonumentos = almacenarEnDBSQLite.cargarMonumentos(municipio);
+
+                if(listaAlbergues.size() >= 1 || listaMonumentos.size() >= 1){
+                    Toast.makeText(getApplicationContext(), "Error. El Municipio contiene Albergues o Monumentos.", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    almacenarEnDBSQLite.eliminarMunicipio(municipio);
+                    Toast.makeText(getApplicationContext(), "Municipio borrado correctamente.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
 
             }
         });
 
+        btnVerAlbergues.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  = new Intent(Ver_municipio.this,VerAlberguesDelMunicipio.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Municipio",municipio);
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+            }
+        });
+
+        btnVerMonumentos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent  = new Intent(Ver_municipio.this,VerMonumentosDelMunicipio.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Municipio",municipio);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
     }
 }

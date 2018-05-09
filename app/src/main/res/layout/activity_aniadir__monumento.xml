@@ -5,29 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Ver_municipio">
+    tools:context=".Aniadir_Monumento">
 
     <TextView
-        android:id="@+id/txtTitulo_VerMunicipio"
+        android:id="@+id/txtTituloAniadirMonumento"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
-        android:text="MUNICIPIO SELECCIONADO"
+        android:text="NUEVO MONUMENTO"
         android:textSize="21sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/txtCodMunicipio_VerMunicipio"
+        android:id="@+id/txtCodMonumento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
-        android:enabled="false"
-        android:hint="CÓDIGO MUNICIPIO"
+        android:hint="CÓDIGO MONUMENTO"
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/txtNombre_VerMunicipio"
+        android:id="@+id/txtNombreMonumentoNuevo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -36,7 +35,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtDescripcion_VerMunicipio"
+        android:id="@+id/txtDescripcionMonumentoNuevo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -45,37 +44,28 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtNumHabitantes_VerMunicipio"
+        android:id="@+id/txtHorarioMonumento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="Nº HABITANTES"
-        android:inputType="number" />
+        android:hint="HORARIO"
+        android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/btnModificar_VerMunicipio"
+    <EditText
+        android:id="@+id/txtPrecioMonumento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="MODIFICAR" />
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="PRECIO"
+        android:inputType="numberDecimal" />
 
     <Button
-        android:id="@+id/btnBorrar_VerMunicipio"
+        android:id="@+id/btnAltaNuevoMonumento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BORRAR" />
-
-    <Button
-        android:id="@+id/btnVerAlbergues"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="VER ALBERGUES" />
-
-    <Button
-        android:id="@+id/btnVerMonumentos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="VER MONUMENTOS" />
-
+        android:layout_marginTop="40dp"
+        android:text="ALTA"
+        android:textSize="20sp" />
 </LinearLayout>

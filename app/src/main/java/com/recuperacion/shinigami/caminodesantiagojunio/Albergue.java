@@ -1,10 +1,12 @@
 package com.recuperacion.shinigami.caminodesantiagojunio;
 
+import java.io.Serializable;
+
 /**
  * Created by Shinigami on 01/04/2018.
  */
 
-public class Albergue {
+public class Albergue implements Serializable {
     private int id;
     private String descripcion;
     private String nombre;
@@ -77,5 +79,10 @@ public class Albergue {
 
     public void setId_Municipio(int id_Municipio) {
         this.id_Municipio = id_Municipio;
+    }
+
+    @Override
+    public String toString() {
+        return getId() + " - " + getNombre();
     }
 }

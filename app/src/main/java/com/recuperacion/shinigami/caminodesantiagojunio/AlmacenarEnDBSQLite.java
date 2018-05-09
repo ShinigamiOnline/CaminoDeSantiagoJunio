@@ -32,7 +32,6 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
         sqLiteDatabase.execSQL("INSERT INTO Municipio values(" + idMunicipio + ",'" + nombreMunicipio + "'," + numHabitantes + ",'" + descripcion + "')");
 
-      //  Toast.makeText(null, "Municipio añadido correctamente", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -50,7 +49,6 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         int idMunicipioDelAlbergue = albergue.getId_Municipio();
 
         sqLiteDatabase.execSQL("INSERT INTO Albergue values(" + idAlbergue + ",'" + nombreAlbergue + "','" + descripcion + "'," + valoracionSum + "," + votos + "," + precio + "," + idMunicipioDelAlbergue + ")");
-        Toast.makeText(null, "Municipio añadido correctamente", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -67,7 +65,6 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         int idMunicipioDelMonumento = monumento.getId_Municipio();
 
         sqLiteDatabase.execSQL("INSERT INTO Monumento values(" + idMonumento + ",'" + nombre + "','" + descripcion + "','" + horario + "'," + precioEntrada + "," + idMunicipioDelMonumento + ")");
-        Toast.makeText(null, "Municipio añadido correctamente", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -81,11 +78,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         nuevosValores.put("habitantes", municipio.getHabitantes());
         nuevosValores.put("descripcionMunicipio", municipio.getDescripcion());
 
-        int numModificados = 0;
-        numModificados = sqLiteDatabase.update("Municipio", nuevosValores, "_id = " + idMunicipio, null);
-       // if (numModificados > 0) {
-       //     Toast.makeText(null, "Municipio Modificado correctamente", Toast.LENGTH_SHORT).show();
-        //}
+        sqLiteDatabase.update("Municipio",nuevosValores,"_id = " + idMunicipio,null);
     }
 
     @Override
@@ -95,8 +88,6 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         ContentValues nuevosValores = new ContentValues();
         int idAlbergue = albergue.getId();
 
-        //nuevosValores.put("_id",albergueAModificar.getNombre());
-
         nuevosValores.put("nombre", albergue.getNombre());
         nuevosValores.put("descripcion", albergue.getDescripcion());
         nuevosValores.put("valoracionSum", albergue.getValoracionSum());
@@ -104,12 +95,8 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         nuevosValores.put("precio", albergue.getPrecio());
         nuevosValores.put("id_Municipio", albergue.getId_Municipio());
 
-        int numModificados = 0;
-        numModificados = sqLiteDatabase.update("Albergue", nuevosValores, "_id = " + idAlbergue, null);
-        if (numModificados > 0) {
-            Toast.makeText(null, "Albergue Modificado correctamente", Toast.LENGTH_SHORT).show();
+        sqLiteDatabase.update("Albergue", nuevosValores, "_id = " + idAlbergue, null);
 
-        }
     }
 
     @Override
@@ -120,21 +107,14 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         ContentValues nuevosValores = new ContentValues();
         int idMonumento = monumento.getId();
 
-        //nuevosValores.put("_id",MonumentoAModificar.getNombre());
-
         nuevosValores.put("nombre", monumento.getNombre());
         nuevosValores.put("descripcion", monumento.getDescripcion());
         nuevosValores.put("horario", monumento.getHorario());
         nuevosValores.put("precio_Entrada", monumento.getPrecioEntrada());
         nuevosValores.put("id_Municipio", monumento.getId_Municipio());
 
-        int numModificados = 0;
-        numModificados = sqLiteDatabase.update("Monumento", nuevosValores, "_id = " + idMonumento, null);
-        if (numModificados > 0) {
-            Toast.makeText(null, "Monumento Modificado correctamente", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(null, "Monumento NO Modificado.", Toast.LENGTH_SHORT).show();
-        }
+        sqLiteDatabase.update("Monumento", nuevosValores, "_id = " + idMonumento, null);
+
     }
 
     @Override
@@ -144,11 +124,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
-        int eliminados = sqLiteDatabase.delete("Municipio", "_id = " + idMunicipio, null);
-
-       // if (eliminados > 0) {
-        //    Toast.makeText(null, "Municipio eliminado correctamente", Toast.LENGTH_SHORT).show();
-        //}
+        sqLiteDatabase.delete("Municipio", "_id = " + idMunicipio, null);
 
     }
 
@@ -158,12 +134,8 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
-        int eliminados = sqLiteDatabase.delete("Albergue", "_id = " + idAlbergue, null);
-        if (eliminados > 0) {
-            Toast.makeText(null, "Albergue eliminado correctamente", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(null, "No se ha eliminado ningún Albergue.", Toast.LENGTH_SHORT).show();
-        }
+        sqLiteDatabase.delete("Albergue", "_id = " + idAlbergue, null);
+
 
     }
 
@@ -174,13 +146,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
-        int eliminados = sqLiteDatabase.delete("Monumento", "_id = " + idMonumento, null);
-        if (eliminados > 0) {
-            Toast.makeText(null, "Monumento eliminado correctamente", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(null, "No se ha eliminado ningún Monumento.", Toast.LENGTH_SHORT).show();
-        }
-
+        sqLiteDatabase.delete("Monumento", "_id = " + idMonumento, null);
 
     }
 
@@ -373,11 +339,8 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         sqLiteDatabase.execSQL("CREATE TABLE Monumento (_id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT, descripcion TEXT,horario TEXT,precio_Entrada REAL, id_Municipio INTEGER)");
 
 
-        sqLiteDatabase.execSQL("INSERT INTO Municipio values(null,'Najera',3000,'Antigua capital del Reino de Nájera')");
-        sqLiteDatabase.execSQL("INSERT INTO Albergue values(null,'Hostal pepito','Albergue juvenil o albergue de juventud es un cuerno de establecimiento hostelero, orientado a los jóvenes, con precios económicos y el objetivo de promocinar o alentar actividades de intercambio cultural entre promociones de distintos países. En la mayoría de las ciudades del mundo, principalmente las capitales',10,3,23.3,0)");
-        sqLiteDatabase.execSQL("INSERT INTO Albergue values(null,'Hostal pepito 2','Albergue juvenil o albergue de juvenomocinar o alentar actividades de inter',13,3,13.3,0)");
-        sqLiteDatabase.execSQL("INSERT INTO Albergue values(null,'Hostal pepito 3','Albergue juvenil o albergue de juvenomocinar o alentar actividades de inter',3,3,3.3,0)");
-        sqLiteDatabase.execSQL("INSERT INTO Municipio values(null,'Logroño',120000,'Capital de la Rioja')");
+        sqLiteDatabase.execSQL("INSERT INTO Municipio values(1,'Najera',3000,'Antigua capital del Reino de Nájera')");
+        sqLiteDatabase.execSQL("INSERT INTO Municipio values(2,'Logroño',120000,'Capital de la Rioja')");
     }
 
     @Override

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".VerAlberguesDelMunicipio">
+
+    <TextView
+        android:id="@+id/txtTitulo_VerMunicipio2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="ALBERGUES DEL MUNICIPIO"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/listView_VerAlbergueDelMunicipio"
+        android:layout_width="match_parent"
+        android:layout_height="403dp"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btnAniadirAlbergue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="AÑADIR ALBERGUE" />
+
+</LinearLayout>
