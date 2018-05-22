@@ -25,7 +25,10 @@
         <activity android:name=".Ver_Albergue" />
         <activity android:name=".VerMonumentosDelMunicipio" />
         <activity android:name=".Ver_Monumento" />
-        <activity android:name=".Aniadir_Monumento"></activity>
+        <activity android:name=".Aniadir_Monumento" />
+        <activity android:name=".PreferenciasActivity" />
+        <activity android:name=".Ver_Municipio_Consultar" />
+        <activity android:name=".Recyclerview_Albergues"></activity>
     </application>
 
 </manifest>

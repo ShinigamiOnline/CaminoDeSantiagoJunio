@@ -7,10 +7,19 @@
     android:orientation="vertical"
     tools:context="com.recuperacion.shinigami.caminodesantiagojunio.Recyclerview_Municipios">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="LISTA MUNICIPIOS"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="369dp"
-        android:layout_height="495dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"

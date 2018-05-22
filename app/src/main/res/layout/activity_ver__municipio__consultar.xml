@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Ver_Municipio_Consultar">
+
+    <TextView
+        android:id="@+id/txtTitulo_VerMunicipio3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="MUNICIPIO SELECCIONADO"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtCodMunicipio_Consulta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="CÓDIGO MUNICIPIO"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/txtNombre_Consulta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="NOMBRE "
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txtDescripcion_Consulta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="DESCRIPCIÓN"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txtNumHabitantes_Consulta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Nº HABITANTES"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btnVerAlbergues_Consulta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:text="VER ALBERGUES" />
+
+    <Button
+        android:id="@+id/btnVerMonumentos_Consulta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="VER MONUMENTOS" />
+</LinearLayout>

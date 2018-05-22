@@ -224,7 +224,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         }
         cursor.close();
         sqLiteDatabase.close();
-        Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
         return listaMunicipios;
 
     }
@@ -252,7 +252,7 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         }
         cursor.close();
         sqLiteDatabase.close();
-        Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
         return listaMunicipios;
 
     }
