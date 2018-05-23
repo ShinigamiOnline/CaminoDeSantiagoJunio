@@ -30,7 +30,7 @@ public class Recyclerview_Municipios extends AppCompatActivity {
         adaptador.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Has pulsado aquí : " +  lista.get(recyclerView.getChildAdapterPosition(view)), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getApplicationContext(), "Has pulsado aquí : " +  lista.get(recyclerView.getChildAdapterPosition(view)), Toast.LENGTH_SHORT).show();
                 Municipio municipioAEnviar = lista.get(recyclerView.getChildAdapterPosition(view));
                 Intent intent = new Intent(getApplicationContext(),Ver_Municipio_Consultar.class);
                 Bundle bundle = new Bundle();

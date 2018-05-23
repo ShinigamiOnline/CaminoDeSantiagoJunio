@@ -244,11 +244,26 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
             String descripcionMunicipio = cursor.getString(3);
             municipio = new Municipio(id, nombre, numeroHabitantes, descripcionMunicipio);
 
-            if (municipio.getHabitantes() > numHabitantes && descripcionMunicipio.startsWith(descripcionABuscar) && tieneAlbergues == true) {
-                listaMunicipios.add(municipio);
-            } else {
 
+            if ( tieneAlbergues == true) {
+                if (municipio.getListaAlbergues().size() >= 1 && municipio.getHabitantes() >= numHabitantes && municipio.getDescripcion().startsWith(descripcionABuscar)){
+                    listaMunicipios.add(municipio);
+                    System.out.println("Has entrado en Albergue == true");
+                }
+            } else if(tieneAlbergues == false){
+                if (municipio.getListaAlbergues().size() <= 0 && municipio.getHabitantes() >= numHabitantes && municipio.getDescripcion().startsWith(descripcionABuscar)){
+                    listaMunicipios.add(municipio);
+                    System.out.println("Has entrado en Albergue == FALSE");
+                }
+           }
+
+            /*
+            if (tieneAlbergues == true){
+                if(municipio.getListaAlbergues().size() >= 1 && municipio.getHabitantes() >= numHabitantes && municipio.getDescripcion().startsWith(descripcionABuscar)){
+
+                }
             }
+*/
         }
         cursor.close();
         sqLiteDatabase.close();

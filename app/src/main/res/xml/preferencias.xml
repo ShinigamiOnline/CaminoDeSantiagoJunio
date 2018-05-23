@@ -9,7 +9,7 @@
             android:summary="Selecciona si deseas ver municipios que contengas albergues."
             android:title="Municipios con Albergue" />
         <EditTextPreference
-            android:defaultValue=""
+            android:defaultValue="10"
             android:inputType="number"
             android:key="MinNumHabitantes"
             android:selectAllOnFocus="true"
@@ -17,7 +17,7 @@
             android:summary="Establece un mínimo de población de los municipios que desees ver."
             android:title="Población mayor que ..." />
         <EditTextPreference
-            android:defaultValue="Default value"
+            android:defaultValue="Antigua"
             android:inputType="text"
             android:key="descripcionMunicipio"
             android:selectAllOnFocus="true"

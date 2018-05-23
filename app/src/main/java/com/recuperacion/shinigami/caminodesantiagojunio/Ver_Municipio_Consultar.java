@@ -17,6 +17,7 @@ public class Ver_Municipio_Consultar extends AppCompatActivity {
     private Button btnVerAlbergues;
     private Button btnVerMonumentos;
     private Municipio municipioRecibido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +41,10 @@ public class Ver_Municipio_Consultar extends AppCompatActivity {
         btnVerAlbergues.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Toast.makeText(getApplicationContext(), "Has pulsado El botón Ver Albergues", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Ver_Municipio_Consultar.this,Recyclerview_Albergues.class);
+                // Toast.makeText(getApplicationContext(), "Has pulsado El botón Ver Albergues", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Ver_Municipio_Consultar.this, Recyclerview_Albergues.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("Municipio",municipioRecibido);
+                bundle.putSerializable("Municipio", municipioRecibido);
                 intent.putExtras(bundle);
                 startActivity(intent);
 
@@ -54,7 +55,12 @@ public class Ver_Municipio_Consultar extends AppCompatActivity {
         btnVerMonumentos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Has pulsado El botón Ver Monumentos", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getApplicationContext(), "Has pulsado El botón Ver Monumentos", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Ver_Municipio_Consultar.this, Recyclerview_Monumentos.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Municipio", municipioRecibido);
+                intent.putExtras(bundle);
+                startActivity(intent);
 
             }
         });

@@ -43,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //intent a lista de municipios filtrado, con recycler view.
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                SharedPreferences preferences = getSharedPreferences("preferencias",MODE_PRIVATE);
 
                 boolean conAlbergues = preferences.getBoolean("MunicipioConAlbergue",true);
 
-                int minNumHabitantes = Integer.parseInt(preferences.getString("MinNumHabitantes","0"));
+                int minNumHabitantes = Integer.parseInt(preferences.getString("MinNumHabitantes","10"));
 
-                String descripcionMunicipio = preferences.getString("DescripcionMunicipio","");
+                String descripcionMunicipio = preferences.getString("descripcionMunicipio","Antigua");
 
 
                 listaMunicipiosFiltrada = almacenarEnDBSQLite.cargarMunicipios(minNumHabitantes,descripcionMunicipio,conAlbergues);
