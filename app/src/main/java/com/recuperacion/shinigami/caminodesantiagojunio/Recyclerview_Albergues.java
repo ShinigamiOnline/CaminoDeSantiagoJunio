@@ -20,12 +20,13 @@ public class Recyclerview_Albergues extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recyclerview__albergues);
+        setContentView(R.layout.activity_recyclerview_albergues);
         recyclerView = findViewById(R.id.recycler_lista_Albergues);
-
-        municipioRecibido = (Municipio) getIntent().getSerializableExtra("Monumento");
-
         almacenarEnDBSQLite = new AlmacenarEnDBSQLite(this, "Gestion", null, 1);
+
+        Bundle objetoEnviado = getIntent().getExtras();
+        municipioRecibido = (Municipio) objetoEnviado.getSerializable("Municipio");
+
         listaAlbergues = almacenarEnDBSQLite.cargarAlbergues(municipioRecibido);
 
         adaptador = new MiAdaptador_Albergues(this, listaAlbergues);

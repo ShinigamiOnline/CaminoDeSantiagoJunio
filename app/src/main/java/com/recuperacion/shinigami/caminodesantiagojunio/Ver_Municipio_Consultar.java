@@ -40,10 +40,11 @@ public class Ver_Municipio_Consultar extends AppCompatActivity {
         btnVerAlbergues.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Has pulsado El botón Ver Albergues", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), "Has pulsado El botón Ver Albergues", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Ver_Municipio_Consultar.this,Recyclerview_Albergues.class);
-
-
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Municipio",municipioRecibido);
+                intent.putExtras(bundle);
                 startActivity(intent);
 
 

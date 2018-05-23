@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
+        android:editable="false"
         android:ems="10"
         android:enabled="false"
         android:hint="CÓDIGO MUNICIPIO"
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
+        android:editable="false"
         android:ems="10"
         android:hint="NOMBRE "
         android:inputType="textPersonName" />
@@ -44,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_weight="1"
+        android:editable="false"
         android:ems="10"
         android:hint="DESCRIPCIÓN"
         android:inputType="textPersonName" />
@@ -54,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_weight="1"
+        android:editable="false"
         android:ems="10"
         android:hint="Nº HABITANTES"
         android:inputType="number" />
