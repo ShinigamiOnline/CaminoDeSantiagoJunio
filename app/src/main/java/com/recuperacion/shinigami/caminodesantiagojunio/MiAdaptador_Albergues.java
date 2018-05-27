@@ -35,16 +35,16 @@ public class MiAdaptador_Albergues extends RecyclerView.Adapter<MiAdaptador_Albe
 
         holder.nombre.setText(String.valueOf(albergue.getNombre()));
         holder.descripcion.setText(String.valueOf(albergue.getDescripcion()));
-        holder.precio.setText("Precio por noche : " + String.valueOf(albergue.getPrecio()));
+        holder.precio.setText("Precio por noche : " + String.valueOf(albergue.getPrecio()) +  " €");
 
 
-        if(valoracion >=0  || valoracion <= 2.4){
+        if(valoracion >=0  && valoracion <= 2.4){
             holder.imagenIcono.setImageResource(R.drawable.malo);
 
-        }else if(valoracion >= 2.5  || valoracion <= 3.9){
+        }else if(valoracion >= 2.5  && valoracion <= 3.9){
             holder.imagenIcono.setImageResource(R.drawable.medio);
 
-        }else if(valoracion >= 4  || valoracion <= 5){
+        }else if(valoracion >= 4  && valoracion <= 5){
             holder.imagenIcono.setImageResource(R.drawable.bueno);
 
         }

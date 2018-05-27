@@ -27,7 +27,7 @@
         android:ems="10"
         android:enabled="false"
         android:hint="CÓDIGO MUNICIPIO"
-        android:inputType="number" />
+        android:inputType="none" />
 
     <EditText
         android:id="@+id/txtNombre_Consulta"
@@ -38,7 +38,7 @@
         android:editable="false"
         android:ems="10"
         android:hint="NOMBRE "
-        android:inputType="textPersonName" />
+        android:inputType="none" />
 
     <EditText
         android:id="@+id/txtDescripcion_Consulta"
@@ -49,7 +49,7 @@
         android:editable="false"
         android:ems="10"
         android:hint="DESCRIPCIÓN"
-        android:inputType="textPersonName" />
+        android:inputType="none" />
 
     <EditText
         android:id="@+id/txtNumHabitantes_Consulta"
@@ -60,7 +60,7 @@
         android:editable="false"
         android:ems="10"
         android:hint="Nº HABITANTES"
-        android:inputType="number" />
+        android:inputType="none" />
 
     <Button
         android:id="@+id/btnVerAlbergues_Consulta"

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item android:id="@+id/filtro_menu"
+    android:title="Filtro"
+    android:icon="@android:drawable/ic_menu_preferences"
+    android:orderInCategory="5"
+    app:showAsAction="never"></item>
+    <item android:id="@+id/preferencias_menu"
+        android:title="Preferencias"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:orderInCategory="5"
+        app:showAsAction="never"></item>
+</menu>

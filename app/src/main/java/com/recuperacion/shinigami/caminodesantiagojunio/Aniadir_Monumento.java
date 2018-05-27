@@ -44,7 +44,7 @@ public class Aniadir_Monumento extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean bandera = true;
-                listaMonumentos = almacenarEnDBSQLite.cargarMonumentos(municipioRecibido);
+                listaMonumentos = almacenarEnDBSQLite.cargarMonumentos();
                 for (Monumento monumento : listaMonumentos) {
                     if (monumento.getId() == Integer.parseInt(txtCodMonumento.getText().toString())) {
                         bandera = false;

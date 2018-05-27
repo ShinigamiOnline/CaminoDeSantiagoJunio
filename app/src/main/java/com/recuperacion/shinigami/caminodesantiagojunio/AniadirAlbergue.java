@@ -47,7 +47,7 @@ public class AniadirAlbergue extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean bandera = true;
-                listaAlbergues = almacenarEnDBSQLite.cargarAlbergues(municipioRecibido);
+                listaAlbergues = almacenarEnDBSQLite.cargarAlbergues();
                 for (Albergue albergue : listaAlbergues) {
                     if (albergue.getId() == Integer.parseInt(txtCodAlbergue.getText().toString())) {
                         bandera = false;

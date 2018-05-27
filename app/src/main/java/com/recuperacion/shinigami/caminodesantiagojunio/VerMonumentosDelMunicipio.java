@@ -64,13 +64,11 @@ public class VerMonumentosDelMunicipio extends AppCompatActivity {
 
 
     }
-
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         listaMonumentos = almacenarEnDBSQLite.cargarMonumentos(municipioRecibido);
         arrayAdapter = new ArrayAdapter<Monumento>(this, android.R.layout.simple_list_item_1, listaMonumentos);
         listView_MonumentosDelMunicipio.setAdapter(arrayAdapter);
-
     }
 }

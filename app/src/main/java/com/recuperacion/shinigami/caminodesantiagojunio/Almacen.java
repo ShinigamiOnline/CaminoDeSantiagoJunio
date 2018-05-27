@@ -21,14 +21,13 @@ public interface Almacen {
     void eliminarMonumento(Monumento monumento);
 
     ArrayList<Municipio> cargarMunicipios();
-    ArrayList<Municipio> cargarMunicipios(int numHabitantes);
-    ArrayList<Municipio> cargarMunicipios(int numHabitantes, String descripcion);
     ArrayList<Municipio> cargarMunicipios(int numHabitantes, String descripcion,boolean tieneAlbergues);
 
-
     ArrayList<Albergue> cargarAlbergues(Municipio municipio);
+    ArrayList<Albergue> cargarAlbergues();
 
     ArrayList<Monumento> cargarMonumentos(Municipio municipio);
+    ArrayList<Monumento> cargarMonumentos();
 
     void guardarValoracion(Albergue albergue,float valoracion);
 

@@ -68,7 +68,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="PRECIO"
-        android:inputType="numberDecimal" />
+        android:inputType="number|numberDecimal" />
 
     <Button
         android:id="@+id/btnAltaNuevoAlbergue"

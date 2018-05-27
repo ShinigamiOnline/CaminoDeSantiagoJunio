@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="preferenciaPrincipal">
 
     <PreferenceCategory android:title="SELECCIÓN DE FILTROS">
 
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="MunicipioConAlbergue"
             android:summary="Selecciona si deseas ver municipios que contengas albergues."
             android:title="Municipios con Albergue" />
@@ -16,13 +17,5 @@
             android:singleLine="true"
             android:summary="Establece un mínimo de población de los municipios que desees ver."
             android:title="Población mayor que ..." />
-        <EditTextPreference
-            android:defaultValue="Antigua"
-            android:inputType="text"
-            android:key="descripcionMunicipio"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
-            android:summary="Esbriba la descripción del municipio de desea ver."
-            android:title="Descripcion del Municipio" />
     </PreferenceCategory>
 </PreferenceScreen>

@@ -49,7 +49,6 @@ public class Gestion_Municipios extends AppCompatActivity {
             }
         });
 
-
         btnAniadirMunicipio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,13 +56,11 @@ public class Gestion_Municipios extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         listaMunicipio = almacenarEnDBSQLite.cargarMunicipios();
         arrayAdapter = new ArrayAdapter<Municipio>(this, android.R.layout.simple_list_item_1, listaMunicipio);
 

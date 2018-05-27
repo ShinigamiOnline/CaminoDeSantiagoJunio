@@ -102,7 +102,6 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
     @Override
     public void modificarMonumento(Monumento monumento) {
 
-
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues nuevosValores = new ContentValues();
         int idMonumento = monumento.getId();
@@ -174,62 +173,6 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
     }
 
     @Override
-    public ArrayList<Municipio> cargarMunicipios(int numHabitantes) {
-
-        ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
-
-        Municipio municipio;
-        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Municipio", null);
-        while (cursor.moveToNext()) {
-            int id = cursor.getInt(0);
-            String nombre = cursor.getString(1);
-            int numeroHabitantes = cursor.getInt(2);
-            String descripcion = cursor.getString(3);
-            municipio = new Municipio(id, nombre, numeroHabitantes, descripcion);
-
-            if (municipio.getHabitantes() > numHabitantes) {
-                listaMunicipios.add(municipio);
-            } else {
-
-            }
-        }
-        cursor.close();
-        sqLiteDatabase.close();
-        //Toast.makeText(null , "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
-        return listaMunicipios;
-
-    }
-
-    @Override
-    public ArrayList<Municipio> cargarMunicipios(int numHabitantes, String descripcionABuscar) {
-
-        ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
-
-        Municipio municipio;
-        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Municipio", null);
-        while (cursor.moveToNext()) {
-            int id = cursor.getInt(0);
-            String nombre = cursor.getString(1);
-            int numeroHabitantes = cursor.getInt(2);
-            String descripcionMunicipio = cursor.getString(3);
-            municipio = new Municipio(id, nombre, numeroHabitantes, descripcionMunicipio);
-
-            if (municipio.getHabitantes() > numHabitantes && descripcionMunicipio.startsWith(descripcionABuscar)) {
-                listaMunicipios.add(municipio);
-            } else {
-
-            }
-        }
-        cursor.close();
-        sqLiteDatabase.close();
-        //Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
-        return listaMunicipios;
-
-    }
-
-    @Override
     public ArrayList<Municipio> cargarMunicipios(int numHabitantes, String descripcionABuscar, boolean tieneAlbergues) {
 
         ArrayList<Municipio> listaMunicipios = new ArrayList<Municipio>();
@@ -243,31 +186,21 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
             int numeroHabitantes = cursor.getInt(2);
             String descripcionMunicipio = cursor.getString(3);
             municipio = new Municipio(id, nombre, numeroHabitantes, descripcionMunicipio);
+            municipio.setListaAlbergues(cargarAlbergues(municipio));
 
 
             if ( tieneAlbergues == true) {
                 if (municipio.getListaAlbergues().size() >= 1 && municipio.getHabitantes() >= numHabitantes && municipio.getDescripcion().startsWith(descripcionABuscar)){
                     listaMunicipios.add(municipio);
-                    System.out.println("Has entrado en Albergue == true");
                 }
             } else if(tieneAlbergues == false){
-                if (municipio.getListaAlbergues().size() <= 0 && municipio.getHabitantes() >= numHabitantes && municipio.getDescripcion().startsWith(descripcionABuscar)){
+                if (municipio.getHabitantes() >= numHabitantes && municipio.getDescripcion().startsWith(descripcionABuscar)){
                     listaMunicipios.add(municipio);
-                    System.out.println("Has entrado en Albergue == FALSE");
                 }
            }
-
-            /*
-            if (tieneAlbergues == true){
-                if(municipio.getListaAlbergues().size() >= 1 && municipio.getHabitantes() >= numHabitantes && municipio.getDescripcion().startsWith(descripcionABuscar)){
-
-                }
-            }
-*/
         }
         cursor.close();
         sqLiteDatabase.close();
-      //  Toast.makeText(null, "Municipios cargados Correctamente", Toast.LENGTH_SHORT).show();
         return listaMunicipios;
 
     }
@@ -300,6 +233,32 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
     }
 
     @Override
+    public ArrayList<Albergue> cargarAlbergues() {
+        Albergue albergue;
+        ArrayList<Albergue> listaAlbergues = new ArrayList<Albergue>();
+
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Albergue", null);
+
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String nombre = cursor.getString(1);
+            String descripcion = cursor.getString(2);
+            int valoracionSum = cursor.getInt(3);
+            int votos = cursor.getInt(4);
+            double precio = cursor.getDouble(5);
+            int id_municipio = cursor.getInt(6);
+            albergue = new Albergue(id, descripcion, nombre, valoracionSum, votos, precio, id_municipio);
+
+            listaAlbergues.add(albergue);
+
+        }
+
+        return listaAlbergues;
+
+    }
+
+    @Override
     public ArrayList<Monumento> cargarMonumentos(Municipio municipio) {
         ArrayList<Monumento> listaMonumentos = new ArrayList<Monumento>();
         int idMunicipio = municipio.getId();
@@ -317,14 +276,34 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
             double precioEntrada = cursor.getDouble(4);
             int id_municipio = cursor.getInt(5);
 
-            monumento = new Monumento(id, descripcion, nombre, horario, precioEntrada, id_municipio);
+            monumento = new Monumento(id, nombre, descripcion, horario, precioEntrada, id_municipio);
 
             listaMonumentos.add(monumento);
-
         }
-
         return listaMonumentos;
+    }
 
+    @Override
+    public ArrayList<Monumento> cargarMonumentos() {
+        ArrayList<Monumento> listaMonumentos = new ArrayList<Monumento>();
+        Monumento monumento;
+
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Monumento", null);
+
+        while (cursor.moveToNext()) {
+
+            int id = cursor.getInt(0);
+            String nombre = cursor.getString(1);
+            String descripcion = cursor.getString(2);
+            String horario = cursor.getString(3);
+            double precioEntrada = cursor.getDouble(4);
+            int id_municipio = cursor.getInt(5);
+
+            monumento = new Monumento(id,nombre,descripcion, horario, precioEntrada, id_municipio);
+            listaMonumentos.add(monumento);
+        }
+        return listaMonumentos;
 
     }
 
@@ -335,14 +314,12 @@ public class AlmacenarEnDBSQLite extends SQLiteOpenHelper implements Almacen {
         ContentValues nuevosValores = new ContentValues();
 
         int idAlbergue = albergue.getId();
-        nuevosValores.put("valoracionSum", albergue.getValoracionSum());
+        int sumaActual = albergue.getValoracionSum();
+        int votosActuales = albergue.getVotos();
+        nuevosValores.put("valoracionSum", sumaActual + valoracion);
+        nuevosValores.put("votos", votosActuales + 1);
 
-        int numModificados = 0;
-        numModificados = sqLiteDatabase.update("Albergue", nuevosValores, "_id = " + idAlbergue, null);
-
-        if (numModificados > 0) {
-            Toast.makeText(null, "Valoracion modificado correctamente", Toast.LENGTH_SHORT).show();
-        }
+        sqLiteDatabase.update("Albergue", nuevosValores, "_id = " + idAlbergue, null);
 
     }
 

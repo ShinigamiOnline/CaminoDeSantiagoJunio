@@ -29,7 +29,12 @@
         <activity android:name=".PreferenciasActivity" />
         <activity android:name=".Ver_Municipio_Consultar" />
         <activity android:name=".Recyclerview_Albergues" />
-        <activity android:name=".Recyclerview_Monumentos"></activity>
+        <activity android:name=".Recyclerview_Monumentos" />
+        <activity android:name=".Filtro_En_Recycler" />
+        <activity android:name=".Puntuar_Albergue"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog"
+            >
+        </activity>
     </application>
 
 </manifest>
