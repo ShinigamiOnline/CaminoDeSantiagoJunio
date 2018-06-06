@@ -44,12 +44,17 @@ public class Aniadir_Municipio extends AppCompatActivity {
                     }
                 }
                 if (bandera) {
-                    nuevoMunicipio = new Municipio(Integer.parseInt(txtCodMunicipio.getText().toString()), txtNombre.getText().toString(), Integer.parseInt(txtNumHabitantes.getText().toString()), txtDescripcion.getText().toString());
-                    almacenarEnDBSQLite.aniadirMunicipio(nuevoMunicipio);
-                    Toast.makeText(Aniadir_Municipio.this, "Municipio creado correctamente.", Toast.LENGTH_SHORT).show();
-                    finish();
+                    if (txtCodMunicipio.getText().toString().equals("") || txtNombre.getText().toString().equals("") || txtDescripcion.getText().toString().equals("") || txtNumHabitantes.getText().toString().equals("")) {
+                        Toast.makeText(Aniadir_Municipio.this, "Tienes que rellenar todos los campos.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        nuevoMunicipio = new Municipio(Integer.parseInt(txtCodMunicipio.getText().toString()), txtNombre.getText().toString(), Integer.parseInt(txtNumHabitantes.getText().toString()), txtDescripcion.getText().toString());
+                        almacenarEnDBSQLite.aniadirMunicipio(nuevoMunicipio);
+                        Toast.makeText(Aniadir_Municipio.this, "Municipio creado correctamente.", Toast.LENGTH_SHORT).show();
+                        finish();
 
+                    }
                 } else {
+
                     Toast.makeText(Aniadir_Municipio.this, "El ID ya está siendo utilizado.", Toast.LENGTH_SHORT).show();
                 }
 

@@ -34,13 +34,13 @@ public class AniadirAlbergue extends AppCompatActivity {
         txtValoracionSum = findViewById(R.id.txtValoracionAlbergue);
         txtVotos = findViewById(R.id.txtVotosAlbergue);
         txtPrecio = findViewById(R.id.txtPrecioAlbergue);
+
         btnAltaAlbergue = findViewById(R.id.btnAltaNuevoAlbergue);
         almacenarEnDBSQLite = new AlmacenarEnDBSQLite(this, "Gestion", null, 1);
         listaAlbergues = new ArrayList<Albergue>();
 
         Bundle objetoEnviado = getIntent().getExtras();
         municipioRecibido = (Municipio) objetoEnviado.getSerializable("Municipio");
-
 
 
         btnAltaAlbergue.setOnClickListener(new View.OnClickListener() {
@@ -54,10 +54,14 @@ public class AniadirAlbergue extends AppCompatActivity {
                     }
                 }
                 if (bandera) {
-                    nuevoAlbergue = new Albergue(Integer.parseInt(txtCodAlbergue.getText().toString()), txtDescripcion.getText().toString(),txtNombre.getText().toString(),Integer.parseInt(txtValoracionSum.getText().toString()),Integer.parseInt(txtVotos.getText().toString()),Double.parseDouble(txtPrecio.getText().toString()),municipioRecibido.getId());
-                    almacenarEnDBSQLite.aniadirAlbergue(nuevoAlbergue);
-                    Toast.makeText(AniadirAlbergue.this, "Albergue creado correctamente.", Toast.LENGTH_SHORT).show();
-                    finish();
+                    if (txtCodAlbergue.getText().toString().equals("") || txtNombre.getText().toString().equals("") || txtDescripcion.getText().toString().equals("") || txtValoracionSum.getText().toString().equals("") || txtVotos.getText().toString().equals("") || txtPrecio.getText().toString().equals("")) {
+                        Toast.makeText(AniadirAlbergue.this, "Tienes que rellenar todos los campos.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        nuevoAlbergue = new Albergue(Integer.parseInt(txtCodAlbergue.getText().toString()), txtDescripcion.getText().toString(), txtNombre.getText().toString(), Integer.parseInt(txtValoracionSum.getText().toString()), Integer.parseInt(txtVotos.getText().toString()), Double.parseDouble(txtPrecio.getText().toString()), municipioRecibido.getId());
+                        almacenarEnDBSQLite.aniadirAlbergue(nuevoAlbergue);
+                        Toast.makeText(AniadirAlbergue.this, "Albergue creado correctamente.", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
 
                 } else {
                     Toast.makeText(AniadirAlbergue.this, "El ID ya está siendo utilizado.", Toast.LENGTH_SHORT).show();

@@ -51,20 +51,20 @@ public class Aniadir_Monumento extends AppCompatActivity {
                     }
                 }
                 if (bandera) {
-                    nuevoMonumento = new Monumento(Integer.parseInt(txtCodMonumento.getText().toString()),txtNombreMonumento.getText().toString(), txtDescripcionMonumento.getText().toString(),txtHorarioMonumento.getText().toString(),Double.parseDouble(txtPrecioMonumento.getText().toString()),municipioRecibido.getId());
-                    almacenarEnDBSQLite.aniadirMonumento(nuevoMonumento);
-                    Toast.makeText(Aniadir_Monumento.this, "Monumento creado correctamente.", Toast.LENGTH_SHORT).show();
-                    finish();
+                    if (txtCodMonumento.getText().toString().equals("") || txtNombreMonumento.getText().toString().equals("") || txtDescripcionMonumento.getText().toString().equals("") || txtHorarioMonumento.getText().toString().equals("") || txtPrecioMonumento.getText().toString().equals("")) {
+                        Toast.makeText(Aniadir_Monumento.this, "Tienes que rellenar todos los campos.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        nuevoMonumento = new Monumento(Integer.parseInt(txtCodMonumento.getText().toString()), txtNombreMonumento.getText().toString(), txtDescripcionMonumento.getText().toString(), txtHorarioMonumento.getText().toString(), Double.parseDouble(txtPrecioMonumento.getText().toString()), municipioRecibido.getId());
+                        almacenarEnDBSQLite.aniadirMonumento(nuevoMonumento);
+                        Toast.makeText(Aniadir_Monumento.this, "Monumento creado correctamente.", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
 
                 } else {
                     Toast.makeText(Aniadir_Monumento.this, "El ID ya está siendo utilizado.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
-
-
 
 
     }
